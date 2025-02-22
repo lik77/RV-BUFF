@@ -1,0 +1,47 @@
+/camera_node:
+  ros__parameters:
+    camera_info_url: package://rm_vision_bringup/config/camera_info.yaml
+    exposure_time: 2500
+    gain: 8.0
+
+/serial_driver:
+  ros__parameters:
+    timestamp_offset: 0.006
+    device_name: /dev/ttyACM0
+    baud_rate: 115200
+    flow_control: none
+    parity: none
+    stop_bits: "1"
+
+/armor_detector:
+  ros__parameters:
+    debug: true
+
+    detect_color: 0
+    binary_thres: 80 #像素值大于80会认为是目标，其他视为背景
+
+    light.min_ratio: 0.1 #设定最小的亮度比率。检测装甲板时，如果光点的亮度比率低于该值，则不认为是有效光点。
+    armor.min_light_ratio: 0.8 #装甲板的最小光点亮度比率。用于确定装甲板中的有效光点。低于 0.8 的光点可能被忽略。
+
+    classifier_threshold: 0.8 #分类器的阈值。该值用于判断分类器是否认为某个目标是有效的，如果分类器的置信度低于 0.8，则认为目标无效。
+    ignore_classes: ["negative"]
+
+/armor_tracker:
+  ros__parameters:
+    target_frame: odom #目标参考坐标系，通常是 odom 表示的是里程计坐标系，意味着追踪的目标会相对于该坐标系来进行定位。
+    max_armor_distance: 10.0 #最大装甲板检测距离，表示装甲板在 10 米范围内才会被追踪。超出该范围的装甲板目标将被忽略。
+
+    ekf:
+      sigma2_q_xyz: 0.05 #EKF 的 XYZ 方向的过程噪声协方差，决定了在三维空间中位置估计的精度。
+      sigma2_q_yaw: 5.0 #EKF 的偏航角（Yaw）的过程噪声协方差，用于角度估计。
+      sigma2_q_r: 80.0 #EKF 的角度误差（旋转）的过程噪声协方差。
+
+      r_xyz_factor: 4e-4 #    位置观测的误差系数，影响如何根据传感器数据调整位置。
+      r_yaw: 5e-3 #偏航角度观测的误差系数。
+
+    tracker:
+      max_match_distance: 0.5 #跟踪器匹配的最大距离，如果检测到的装甲板与当前目标的距离超过 0.5 米，则认为该目标不匹配。
+      max_match_yaw_diff: 1.0 #跟踪器匹配的最大偏航角差异，超过 1 度的目标将被认为不匹配。
+
+      tracking_thres: 5 #跟踪阈值，可能表示追踪目标的可靠性阈值，低于 5 的目标可能会丢失或重新识别。
+      lost_time_thres: 1.0 #丢失目标的时间阈值，超过 1 秒没有检测到目标时，将认为目标已经丢失。
