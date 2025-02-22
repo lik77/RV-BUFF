@@ -1,0 +1,13 @@
+# 移除串口驱动节点的配置
+/rm_serial_driver:
+  ros__parameters:
+    # 串口设备的名称
+    device_name: /dev/ttyACM0
+    # 串口通信的波特率
+    baud_rate: 115200
+    # 串口通信的流控制方式，此处设置为无流控制
+    flow_control: none
+    # 串口通信的奇偶校验方式，此处设置为无奇偶校验
+    parity: none
+    # 串口通信的停止位数，此处设置为1位
+    stop_bits: "1"
