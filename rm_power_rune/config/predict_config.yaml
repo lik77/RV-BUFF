@@ -1,0 +1,14 @@
+Predict:
+  # 预测器参数
+  history_size: 20        # 历史状态数量
+  min_speed: 0.1         # 最小角速度(rad/s)
+  max_speed: 2.0         # 最大角速度(rad/s)
+  
+  # 补偿参数
+  time_compensation: 0.1  # 时间补偿(s)
+  angle_compensation: 2.0 # 角度补偿(度)
+  
+  # 滤波参数
+  filter:
+    enable: true
+    alpha: 0.7          # 平滑系数 

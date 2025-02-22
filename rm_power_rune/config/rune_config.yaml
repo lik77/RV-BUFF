@@ -1,0 +1,22 @@
+RuneParams:
+  # 小能量机关参数
+  small_rune:
+    rotation_speed: 10.0  # rad/s
+    radius: 700          # mm
+    armor_width: 125     # mm
+    armor_height: 125    # mm
+    
+  # 大能量机关参数
+  large_rune:
+    radius: 800          # mm
+    armor_width: 230     # mm
+    armor_height: 127    # mm
+    initial_speed: 0.780 # rad/s
+    acceleration: 1.884  # rad/s^2
+    
+  # 前哨站能量机关参数
+  outpost_rune:
+    radius: 650          # mm
+    armor_width: 125     # mm
+    armor_height: 125    # mm
+    rotation_speed: 10.0 # rad/s 

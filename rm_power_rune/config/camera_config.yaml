@@ -1,0 +1,44 @@
+# 相机基本参数
+Camera:
+  # 相机基本参数
+  exposure_auto: false      # 自动曝光
+  exposure_time: 5000      # 曝光时间(us)
+  gain_auto: false         # 自动增益
+  gain: 10.0              # 增益
+  frame_rate: 120         # 帧率
+  
+  # ROI设置
+  roi:
+    enable: true
+    x: 320
+    y: 240
+    width: 640
+    height: 480
+    
+  # 触发模式
+  trigger_mode: false     # 关闭触发模式
+  
+  # 图像格式
+  pixel_format: "BGR8"    # BGR8格式
+  
+# 图像预处理参数
+ImageProcess:
+  # 亮度对比度调整
+  brightness: 0
+  contrast: 1.2
+  
+  # 白平衡
+  white_balance:
+    r_gain: 1.0
+    g_gain: 1.0
+    b_gain: 1.0
+    
+  # 图像去噪
+  denoise:
+    enable: true
+    h: 10        # 空间窗口大小
+    template_window_size: 7
+    search_window_size: 21
+    
+  # Gamma校正
+  gamma: 0.8 
