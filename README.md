@@ -52,7 +52,7 @@ rosdep install --from-paths src --ignore-src -r -y
 ```
 
 
-  ```Shell
+```Shell
 colcon build --symlink-install
 ```
 
@@ -64,9 +64,9 @@ sudo chmod 777 /dev/ttyACM0
 ```
 
 
-  运行每个节点，必须新建终端并输入命令，且运行前需要执行 `source install/setup.bash`
+运行每个节点，必须新建终端并输入命令，且运行前需要执行 `source install/setup.bash`
 
-  ```Shell
+ ```Shell
 source install/setup.bash
 ros2 launch rm_vision_bringup no_hardware.launch.py
 ```
@@ -80,19 +80,19 @@ ros2 launch rm_vision_bringup vision_bringup.launch.py
 
   - 单独运行子模块（一般用不上，写在这只为了有时开发要调用 rv 独立模块调试）
 
-    ```Shell
+    ```自瞄
 source install/setup.bash
 ros2 launch auto_aim_bringup auto_aim.launch.py 
 ```
 
 
-    ```Shell
+ ```海康
 source install/setup.bash
 ros2 launch hik_camera hik_camera.launch.py
 ```
 
 
-    ```Shell
+  ```串口通讯模块
 source install/setup.bash
 ros2 launch rm_serial_driver serial_driver.launch.py
 ```
@@ -102,10 +102,9 @@ ros2 launch rm_serial_driver serial_driver.launch.py
 
   打开新的终端
 
-  ```Shell
 source install/setup.bash
 ros2 launch foxglove_bridge foxglove_bridge_launch.xml port:=8765
-```
+
 
 
   使用 Chromium 浏览器打开 [https://studio.foxglove.dev/](https://studio.foxglove.dev/) ，并打开 connection
@@ -123,17 +122,13 @@ ros2 launch foxglove_bridge foxglove_bridge_launch.xml port:=8765
 # 【拓展】其他操作
 
   ## 查看相机帧率
-
-    ```Shell
 ros2 topic hz /camera_info
-```
+
 
 
   ## 关闭所有节点
-
-    ```Shell
 ros2 node killall
-```
+
 
 
 
