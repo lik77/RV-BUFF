@@ -1,5 +1,4 @@
-搬运自华师rm_vision
-本仓库为适配于野狼25赛季视觉自瞄模块
+本仓库为适配于广州城市理工学院野狼25赛季视觉自瞄模块
 # rm_vision总入口
 
   ## 再见RM
@@ -129,6 +128,9 @@ ros2 topic hz /camera_info
 
   ## 关闭所有节点
 ros2 node killall
+
+
+感谢华师的指导
 
 
 
